@@ -1,0 +1,186 @@
+{
+  "timestamp": "2025-10-19T01:50:17.605Z",
+  "summary": {
+    "totalPassed": 22,
+    "totalFailed": 5
+  },
+  "requirements": {
+    "requerimiento1": {
+      "passed": 3,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "Landing page accesible",
+          "status": "ERROR",
+          "message": "request to http://localhost:5177/ failed, reason: "
+        },
+        {
+          "name": "Panel de administración accesible",
+          "status": "PASS",
+          "message": "Panel admin carga correctamente"
+        },
+        {
+          "name": "Sistema de login accesible",
+          "status": "PASS",
+          "message": "Sistema login carga correctamente"
+        },
+        {
+          "name": "Interfaz de votación accesible",
+          "status": "PASS",
+          "message": "Interfaz votación carga correctamente"
+        }
+      ]
+    },
+    "requerimiento2": {
+      "passed": 3,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "API obtener candidatos",
+          "status": "PASS",
+          "message": "3 candidatos encontrados"
+        },
+        {
+          "name": "Crear candidato con campos extendidos",
+          "status": "PASS",
+          "message": "Candidato creado con todos los campos"
+        },
+        {
+          "name": "Campos de candidato disponibles para votantes",
+          "status": "PASS",
+          "message": "Candidatos tienen información completa para votantes"
+        }
+      ]
+    },
+    "requerimiento3": {
+      "passed": 3,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "API obtener usuarios/votantes",
+          "status": "PASS",
+          "message": "7 usuarios encontrados"
+        },
+        {
+          "name": "Crear votante individual",
+          "status": "FAIL",
+          "message": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+        },
+        {
+          "name": "Carga masiva de votantes",
+          "status": "PASS",
+          "message": "2 votantes creados masivamente"
+        },
+        {
+          "name": "Verificación de elegibilidad",
+          "status": "PASS",
+          "message": "2 votantes elegibles encontrados"
+        }
+      ]
+    },
+    "requerimiento4": {
+      "passed": 4,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Sistema de autenticación funcional",
+          "status": "PASS",
+          "message": "Sistema de autenticación rechaza credenciales inválidas (correcto)"
+        },
+        {
+          "name": "Rate limiting implementado",
+          "status": "PASS",
+          "message": "Rate limiting activo para login"
+        },
+        {
+          "name": "API de votación protegida",
+          "status": "PASS",
+          "message": "API de votación rechaza credenciales inválidas (correcto)"
+        },
+        {
+          "name": "Logs de auditoría generados",
+          "status": "PASS",
+          "message": "7 eventos de auditoría registrados"
+        }
+      ]
+    },
+    "requerimiento5": {
+      "passed": 4,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Sistema de elecciones funcional",
+          "status": "PASS",
+          "message": "1 elecciones encontradas"
+        },
+        {
+          "name": "Resultados preliminares disponibles",
+          "status": "PASS",
+          "message": "Resultados preliminares generados correctamente"
+        },
+        {
+          "name": "API de publicación de resultados",
+          "status": "PASS",
+          "message": "Sistema de publicación de resultados funcional"
+        },
+        {
+          "name": "Logs de auditoría detallados",
+          "status": "PASS",
+          "message": "8 logs de auditoría detallados"
+        }
+      ]
+    },
+    "requerimiento6": {
+      "passed": 3,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "Health check del servidor",
+          "status": "PASS",
+          "message": "Servidor backend funcionando correctamente"
+        },
+        {
+          "name": "APIs de administración disponibles",
+          "status": "FAIL",
+          "message": "3/5 APIs de administración funcionando"
+        },
+        {
+          "name": "Base de datos funcional",
+          "status": "PASS",
+          "message": "Base de datos persiste datos correctamente"
+        },
+        {
+          "name": "Sistema de estadísticas completo",
+          "status": "PASS",
+          "message": "Sistema de estadísticas completo y funcional"
+        }
+      ]
+    },
+    "requerimiento7": {
+      "passed": 2,
+      "failed": 2,
+      "tests": [
+        {
+          "name": "Validación de datos de entrada",
+          "status": "PASS",
+          "message": "Validación de entrada funciona correctamente"
+        },
+        {
+          "name": "Manejo de errores HTTP",
+          "status": "FAIL",
+          "message": "Manejo de errores HTTP funciona correctamente"
+        },
+        {
+          "name": "Integridad de datos",
+          "status": "FAIL",
+          "message": "Sistema permite datos duplicados"
+        },
+        {
+          "name": "Performance del sistema",
+          "status": "PASS",
+          "message": "Respuesta del sistema en 2ms (Excelente)"
+        }
+      ]
+    }
+  }
+}

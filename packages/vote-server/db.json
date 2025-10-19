@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "id": "admin1",
+      "email": "admin@demo.com",
+      "password": "admin123",
+      "role": "admin",
+      "hasVoted": false
+    }
+  ],
+  "candidates": [
+    {
+      "id": "c1",
+      "name": "María González",
+      "photo": "https://i.imgur.com/5PbKyEU.jpeg",
+      "description": "Candidata con amplia experiencia en gestión pública y desarrollo social.",
+      "party": "Partido Progresista",
+      "position": "Alcaldesa",
+      "trajectory": "15 años en el sector público, ex-directora de desarrollo social",
+      "profile": "Profesional comprometida con la justicia social y el desarrollo sustentable",
+      "projects": "Plan de vivienda social, modernización del transporte público, programas educativos",
+      "votes": 0
+    },
+    {
+      "id": "c2",
+      "name": "Carlos Mendoza",
+      "photo": "https://i.imgur.com/IQM8xkX.jpeg",
+      "description": "Líder empresarial enfocado en crecimiento económico e innovación tecnológica.",
+      "party": "Partido Liberal",
+      "position": "Alcalde",
+      "trajectory": "20 años en el sector privado, fundador de 3 empresas tecnológicas",
+      "profile": "Empresario innovador con visión de ciudad inteligente",
+      "projects": "Digitalización municipal, parques tecnológicos, apoyo a emprendedores",
+      "votes": 0
+    },
+    {
+      "id": "c3",
+      "name": "Ana Rodríguez",
+      "photo": "https://i.imgur.com/r7BPI14.jpeg",
+      "description": "Activista social comprometida con la igualdad y los derechos humanos.",
+      "party": "Partido Social",
+      "position": "Alcaldesa",
+      "trajectory": "12 años liderando organizaciones civiles y movimientos sociales",
+      "profile": "Defensora de derechos humanos y activista ambiental",
+      "projects": "Programa de inclusión social, protección ambiental, centro comunitarios",
+      "votes": 0
+    }
+  ],
+  "votes": [],
+  "auditLogs": [],
+  "sessions": [],
+  "elections": [
+    {
+      "id": "election-2024",
+      "name": "Elección General 2024",
+      "description": "Elección general para cargos públicos",
+      "startDate": "2025-12-01T08:00:00.000Z",
+      "endDate": "2025-12-01T18:00:00.000Z",
+      "status": "draft",
+      "allowedVoters": [],
+      "settings": {
+        "requireAccessCode": false,
+        "allowPublicResults": true,
+        "autoPublishResults": true,
+        "resultPublishDelay": 0
+      },
+      "createdAt": "2025-10-19T21:40:00.000Z",
+      "createdBy": "admin"
+    }
+  ],
+  "publishedResults": []
+}

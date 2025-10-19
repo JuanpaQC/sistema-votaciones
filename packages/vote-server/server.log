@@ -1,0 +1,54 @@
+
+🚀 Vote Server listening on port 4000
+
+📊 Sistema Electoral Completo - API Endpoints:
+
+📋 Public APIs:
+   GET  /api/health - Health check
+   GET  /api/candidates - Lista pública de candidatos
+   GET  /api/results - Resultados públicos
+   GET  /api/voting-progress - Progreso de votación
+
+🔐 Authentication APIs:
+   POST /api/login - Autenticación de usuario
+   POST /api/logout - Cerrar sesión
+   POST /api/vote - Emisión de voto
+
+🗳️  Election APIs:
+   GET  /api/elections - Lista de elecciones
+   GET  /api/elections/active - Elección activa
+   GET  /api/results/preliminary/:id - Resultados preliminares
+   GET  /api/results/published/:id - Resultados oficiales
+
+👨‍💼 Admin - Candidate Management:
+   POST /api/admin/candidates - Crear candidato básico
+   POST /api/admin/candidates/extended - Crear candidato completo
+   PUT  /api/admin/candidates/:id - Actualizar candidato básico
+   PUT  /api/admin/candidates/extended/:id - Actualizar candidato completo
+   DELETE /api/admin/candidates/:id - Eliminar candidato
+
+👥 Admin - Voter Management:
+   GET  /api/admin/users - Lista de usuarios
+   GET  /api/admin/users/detailed - Lista detallada de usuarios
+   POST /api/admin/users - Crear votante individual
+   POST /api/admin/users/bulk-upload - Carga masiva de votantes
+   POST /api/admin/users/:id/regenerate-credentials - Regenerar credenciales
+   PUT  /api/admin/users/:id/eligibility - Actualizar elegibilidad
+   DELETE /api/admin/users/:id - Eliminar usuario
+
+🗳️  Admin - Election Management:
+   POST /api/admin/elections - Crear elección
+   GET  /api/admin/elections/:id - Detalle de elección
+   PUT  /api/admin/elections/:id - Actualizar elección
+   PUT  /api/admin/elections/:id/status - Cambiar estado
+   POST /api/admin/elections/:id/publish - Publicar resultados
+
+📊 Admin - Statistics & Audit:
+   GET  /api/admin/voting-stats - Estadísticas completas
+   GET  /api/admin/audit-logs/detailed - Logs de auditoría
+   GET  /api/admin/audit-logs/stats - Estadísticas de logs
+
+⚙️  Auto-publish system initialized - checking every minute
+💾 Database: LowDB JSON file with security features
+🔒 Security: PBKDF2 password hashing, session management, rate limiting
+

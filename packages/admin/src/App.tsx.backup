@@ -1,0 +1,141 @@
+import { Suspense, useEffect } from "react";
+import { Route, Routes, NavLink } from "react-router-dom";
+import { routes } from "./routes";
+import { useRealDataStore } from "./store/useRealDataStore";
+import { useUIStore } from "./store/useUIStore";
+import {
+  Menu,
+  BarChart2,
+  Settings,
+  Users,
+  Vote,
+  ListChecks,
+  ShieldAlert,
+} from "lucide-react";
+
+export default function App() {
+  const { checkAdminAuth, isAdmin, loading, startPolling } = useRealDataStore();
+  const open = useUIStore((s) => s.sidebarOpen);
+  const setOpen = useUIStore((s) => s.setSidebar);
+
+  useEffect(() => {
+    const init = async () => {
+      await checkAdminAuth();
+      if (isAdmin) {
+        startPolling(); // Iniciar actualización automática de datos
+      }
+    };
+    init();
+  }, [checkAdminAuth, isAdmin, startPolling]);
+
+  // Mostrar loading mientras verifica auth
+  if (isAdmin === null || loading) {
+    return (
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+          <p className="text-gray-400">Verificando permisos de administrador...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Mostrar mensaje si no es admin
+  if (isAdmin === false) {
+    return (
+      <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
+        <div className="text-center space-y-6 p-8">
+          <div className="text-6xl">🔒</div>
+          <div>
+            <h2 className="text-2xl font-bold text-red-400 mb-2">Acceso Denegado</h2>
+            <p className="text-gray-400 mb-6">Necesitas permisos de administrador para acceder a este panel.</p>
+          </div>
+          <div className="space-y-3">
+            <a 
+              href="http://localhost:5174" 
+              className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Ir al Login
+            </a>
+            <div className="text-sm text-gray-500">
+              <p><strong>Credenciales de admin:</strong></p>
+              <p>admin@demo.com / 123456</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="min-h-screen grid"
+      style={{ gridTemplateColumns: open ? "260px 1fr" : "64px 1fr" }}
+    >
+      <aside className="bg-neutral-800/60 backdrop-blur border-r border-white/5">
+        <div className="p-4 flex items-center gap-2">
+          <button
+            className="p-2 rounded-xl hover:bg-white/10"
+            onClick={() => setOpen(!open)}
+          >
+            <Menu size={20} />
+          </button>
+          {open && <span className="font-bold">Admin Votos</span>}
+        </div>
+        <nav className="px-2 space-y-2">
+          <Item to="/" icon={<BarChart2 size={18} />}>
+            Dashboard
+          </Item>
+          <Item to="/elections" icon={<ListChecks size={18} />}>
+            Elecciones
+          </Item>
+          <Item to="/candidates" icon={<Vote size={18} />}>
+            Candidatos
+          </Item>
+          <Item to="/voters" icon={<Users size={18} />}>
+            Padrones
+          </Item>
+          <Item to="/audits" icon={<ShieldAlert size={18} />}>
+            Auditoría
+          </Item>
+          <Item to="/settings" icon={<Settings size={18} />}>
+            Ajustes
+          </Item>
+        </nav>
+      </aside>
+      <main className="p-6">
+        <Suspense fallback={<div className="animate-pulse">Cargando…</div>}>
+          <Routes>
+            {routes.map((r, i) => (
+              <Route key={i} path={r.path} element={<r.element />} />
+            ))}
+          </Routes>
+        </Suspense>
+      </main>
+    </div>
+  );
+}
+
+function Item({
+  to,
+  icon,
+  children,
+}: {
+  to: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10 ${
+          isActive ? "bg-white/10 text-white" : "text-slate-300"
+        }`
+      }
+    >
+      {icon}
+      {children}
+    </NavLink>
+  );
+}
